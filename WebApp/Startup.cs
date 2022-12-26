@@ -1,22 +1,19 @@
+using Application;
+using DataAccess;
+using DataAccess.Interface;
+using DomainServices.Implementation;
+using DomainServices.Intefaces;
+using Email.Implementation;
+using Email.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application;
-using AutoMapper;
-using DataAccess;
-using Microsoft.EntityFrameworkCore;
-using DomainServices.Intefaces;
-using DomainServices.Implementation;
+using WebApp.Interfaces;
+using WebApp.Services;
 
 namespace WebApp
 {
@@ -33,16 +30,27 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
 
+     
+            // Domain
+            services.AddScoped<IOrderDomainService, OrderDomainService>();
+
+            //Infrascture
+
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IEmailService,   EmailService>();
+            services.AddDbContext<IDbContext,AppDbContext>(builder =>
+                builder.UseSqlServer(Configuration.GetConnectionString("MsSql")));
+
+
+            // Application
+            services.AddScoped<IOrderService, OrderService>();
+
+            //framework
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApp", Version = "v1" });
             });
-
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IOrderDomainService, OrderDomainService>();
-            services.AddDbContext<AppDbContext>(builder =>
-                builder.UseSqlServer(Configuration.GetConnectionString("MsSql")));
             services.AddAutoMapper(typeof(MapperProfile));
         }
 

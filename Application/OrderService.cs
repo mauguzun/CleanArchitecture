@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using DataAccess;
+﻿using AutoMapper;
+using DataAccess.Interface;
 using DomainServices.Intefaces;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Application
 {
     public class OrderService : IOrderService
     {
-        private readonly AppDbContext _dbContext;
+        private readonly IDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly IOrderDomainService orderDomainService;
 
-        public OrderService(AppDbContext dbContext, IMapper mapper,IOrderDomainService orderDomainService)
+        public OrderService(IDbContext dbContext, IMapper mapper,IOrderDomainService orderDomainService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
