@@ -1,10 +1,10 @@
-using Application;
 using DataAccess;
 using DataAccess.Interface;
 using DomainServices.Implementation;
 using DomainServices.Intefaces;
 using Email.Implementation;
 using Email.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using UseCases;
+using UseCases.Orders.Commands.Create;
+using UseCases.Orders.Utils;
+using UseCases.Services;
 using WebApp.Interfaces;
 using WebApp.Services;
 
@@ -44,6 +48,8 @@ namespace WebApp
 
             // Application
             services.AddScoped<IOrderService, OrderService>();
+
+            services.AddMediatR(typeof(CreateOrderCommand));
 
             //framework
             services.AddControllers();

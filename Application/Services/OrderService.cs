@@ -4,8 +4,9 @@ using Domain.Entities;
 using DomainServices.Intefaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using UseCases.Orders.Dto;
 
-namespace Application
+namespace UseCases.Services
 {
     public class OrderService : IOrderService
     {
@@ -45,5 +46,6 @@ namespace Application
 
             return order.Id;
         }
+
     }
 }

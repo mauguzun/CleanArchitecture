@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UseCases.Orders.Dto;
 
-namespace Application
+namespace UseCases.Services
 {
     public interface IOrderService
     {
