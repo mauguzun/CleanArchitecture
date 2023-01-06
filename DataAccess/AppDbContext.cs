@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class AppDbContext : DbContext , IDbContext
+    public class AppDbContext : DbContext, IDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -18,13 +18,13 @@ namespace DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        public Task<int> SaveChagesAsync(CancellationToken cancellationToken) =>base.SaveChangesAsync(cancellationToken);
+        public Task<int> SaveChagesAsync(CancellationToken cancellationToken = default) => base.SaveChangesAsync(cancellationToken);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<OrderItem>().HasKey(x => new {x.OrderId, x.ProductId});
+            modelBuilder.Entity<OrderItem>().HasKey(x => new { x.OrderId, x.ProductId });
 
             modelBuilder.Entity<Product>().Property(p => p.Price).HasColumnType("decimal(18,4)");
 

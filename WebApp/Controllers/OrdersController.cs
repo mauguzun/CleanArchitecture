@@ -24,6 +24,13 @@ namespace WebApp.Controllers
         {
             var result = await _orderService.GetByIdAsync(id);
             return result;
+        } 
+        
+        [HttpPost]
+        public async Task<int> Create([FromBody] CreateOroderDto dto)
+        {
+            var result = await _orderService.CreateOrderAsync(dto);
+            return result;
         }
     }
 }

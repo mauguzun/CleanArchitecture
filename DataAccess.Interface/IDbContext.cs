@@ -7,6 +7,6 @@ namespace DataAccess.Interface
     {
         DbSet<Order> Orders { get; }
         DbSet<Product> Products { get; }
-        Task<int> SaveChagesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChagesAsync(CancellationToken cancellationToken = default);
     }
 }

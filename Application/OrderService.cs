@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccess.Interface;
+using Domain.Entities;
 using DomainServices.Intefaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -12,12 +13,14 @@ namespace Application
         private readonly IMapper _mapper;
         private readonly IOrderDomainService orderDomainService;
 
-        public OrderService(IDbContext dbContext, IMapper mapper,IOrderDomainService orderDomainService)
+        public OrderService(IDbContext dbContext, IMapper mapper, IOrderDomainService orderDomainService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
             this.orderDomainService = orderDomainService;
         }
+
+
         public async Task<OrderDto> GetByIdAsync(int id)
         {
             var order = await _dbContext.Orders
@@ -31,6 +34,16 @@ namespace Application
             dto.Total = orderDomainService.GetTotal(order);
 
             return dto;
+        }
+
+
+        public async Task<int> CreateOrderAsync(CreateOroderDto dto)
+        {
+            var order = _mapper.Map<Order>(dto);
+            _dbContext.Orders.Add(order);
+            await _dbContext.SaveChagesAsync();
+
+            return order.Id;
         }
     }
 }

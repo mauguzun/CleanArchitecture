@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Entities;
 
 namespace Application
@@ -13,6 +8,8 @@ namespace Application
         public MapperProfile()
         {
             CreateMap<Order, OrderDto>();
+            CreateMap<CreateOroderDto, Order>();
+            CreateMap<OrderItemDto, Order>();
         }
     }
 }
