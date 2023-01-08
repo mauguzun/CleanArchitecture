@@ -1,5 +1,7 @@
+using ApplicationServices.Interfaces;
+using ApplicatonServices.Implementation;
 using DataAccess;
-using DataAccess.Interface;
+using DataAccess.Interfaces;
 using DomainServices.Implementation;
 using DomainServices.Intefaces;
 using Email.Implementation;
@@ -47,9 +49,10 @@ namespace WebApp
 
 
             // Application
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderService, OrderService>(); // one way user service
+            services.AddMediatR(typeof(CreateOrderCommand)); //  use SQRC
 
-            services.AddMediatR(typeof(CreateOrderCommand));
+            services.AddScoped<ISecurityService, SecurityService>();
 
             //framework
             services.AddControllers();

@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Interface
+namespace DataAccess.Interfaces
 {
     public interface IDbContext
     {

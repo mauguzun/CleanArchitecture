@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationServices.Interfaces\ApplicationServices.Interfaces.csproj" />
     <ProjectReference Include="..\Application\UseCases.csproj" />
+    <ProjectReference Include="..\ApplicatonServices.Implementation\ApplicatonServices.Implementation.csproj" />
     <ProjectReference Include="..\DataAccess.Interface\DataAccess.Interfaces.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\DomainServices.Implementation\DomainServices.Implementation.csproj" />

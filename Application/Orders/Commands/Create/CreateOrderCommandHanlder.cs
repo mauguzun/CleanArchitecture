@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using DataAccess.Interface;
-using Domain.Entities;
+using DataAccess.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,7 +19,7 @@ namespace UseCases.Orders.Commands.Create
 
         public async Task<int> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = _mapper.Map<Order>(request.Dto);
+            var order = _mapper.Map<Domain.Entities.Order>(request.Dto);
             _dbContext.Orders.Add(order);
             await _dbContext.SaveChagesAsync();
 
