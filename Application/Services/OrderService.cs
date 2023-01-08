@@ -3,10 +3,10 @@ using DataAccess.Interfaces;
 using Domain.Entities;
 using DomainServices.Intefaces;
 using Microsoft.EntityFrameworkCore;
+using Mobile.UseCases.Orders.Dto;
 using System.Threading.Tasks;
-using UseCases.Orders.Dto;
 
-namespace UseCases.Services
+namespace Mobile.UseCases.Services
 {
     public class OrderService : IOrderService
     {

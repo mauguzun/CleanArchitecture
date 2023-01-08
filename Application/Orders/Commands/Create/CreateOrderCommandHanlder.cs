@@ -4,7 +4,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UseCases.Orders.Commands.Create
+namespace Mobile.UseCases.Orders.Commands.Create
 {
     public class CreateOrderCommandHanlder : IRequestHandler<CreateOrderCommand, int>
     {

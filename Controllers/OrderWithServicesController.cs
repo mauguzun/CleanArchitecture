@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Mobile.UseCases.Orders.Dto;
+using Mobile.UseCases.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UseCases.Orders.Dto;
-using UseCases.Services;
 
-namespace WebApp.Controllers
+namespace Mobile.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,8 +25,8 @@ namespace WebApp.Controllers
         {
             var result = await _orderService.GetByIdAsync(id);
             return result;
-        } 
-        
+        }
+
         [HttpPost]
         public async Task<int> Create([FromBody] CreateOroderDto dto)
         {

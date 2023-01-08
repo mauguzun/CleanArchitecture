@@ -14,10 +14,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Mobile.UseCases.Orders.Commands.Create;
+using Mobile.UseCases.Orders.Utils;
+using Mobile.UseCases.Services;
 using UseCases;
-using UseCases.Orders.Commands.Create;
-using UseCases.Orders.Utils;
-using UseCases.Services;
 using WebApp.Interfaces;
 using WebApp.Services;
 

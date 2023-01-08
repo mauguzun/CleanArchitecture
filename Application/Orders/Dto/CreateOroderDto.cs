@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UseCases.Orders.Dto
+namespace Mobile.UseCases.Orders.Dto
 {
     public class CreateOroderDto
     {

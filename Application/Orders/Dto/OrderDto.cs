@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UseCases.Orders.Dto
+namespace Mobile.UseCases.Orders.Dto
 {
     public class OrderDto
     {

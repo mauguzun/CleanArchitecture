@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using UseCases.Orders.Dto;
+using Mobile.UseCases.Orders.Dto;
 
-namespace UseCases.Orders.Queries.GetOrderBy
+namespace Mobile.UseCases.Orders.Queries.GetOrderBy
 {
     public class GetOrderByIdQuery : IRequest<OrderDto>
     {

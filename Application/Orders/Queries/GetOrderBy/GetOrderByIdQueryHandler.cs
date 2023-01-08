@@ -3,11 +3,11 @@ using DataAccess.Interfaces;
 using DomainServices.Intefaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Mobile.UseCases.Orders.Dto;
 using System.Threading;
 using System.Threading.Tasks;
-using UseCases.Orders.Dto;
 
-namespace UseCases.Orders.Queries.GetOrderBy
+namespace Mobile.UseCases.Orders.Queries.GetOrderBy
 {
     public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, OrderDto>
     {

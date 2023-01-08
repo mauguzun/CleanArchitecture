@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using UseCases.Orders.Dto;
+using Mobile.UseCases.Orders.Dto;
 
-namespace UseCases.Orders.Commands.Create
+namespace Mobile.UseCases.Orders.Commands.Create
 {
     public class CreateOrderCommand : IRequest<int>
     {

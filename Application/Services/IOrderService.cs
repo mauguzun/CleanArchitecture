@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Mobile.UseCases.Orders.Dto;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UseCases.Orders.Dto;
 
-namespace UseCases.Services
+namespace Mobile.UseCases.Services
 {
     public interface IOrderService
     {

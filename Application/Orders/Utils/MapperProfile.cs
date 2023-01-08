@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
-using UseCases.Orders.Dto;
+using Mobile.UseCases.Orders.Dto;
 
-namespace UseCases.Orders.Utils
+namespace Mobile.UseCases.Orders.Utils
 {
     public class MapperProfile : Profile
     {
