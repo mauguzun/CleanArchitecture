@@ -17,7 +17,6 @@ using Microsoft.OpenApi.Models;
 using Mobile.UseCases.Orders.Commands.Create;
 using Mobile.UseCases.Orders.Utils;
 using Mobile.UseCases.Services;
-using UseCases;
 using WebApp.Interfaces;
 using WebApp.Services;
 

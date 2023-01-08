@@ -1,17 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UseCases;
-using UseCases.Orders.Commands.Create;
-using UseCases.Orders.Dto;
-using UseCases.Orders.Queries.GetOrderBy;
-using UseCases.Services;
+using Mobile.UseCases.Orders.Commands.Create;
+using Mobile.UseCases.Orders.Dto;
+using Mobile.UseCases.Orders.Queries.GetOrderBy;
 
-namespace WebApp.Controllers
+namespace Mobile.Controllers
 {
     [ApiController]
     [Route("[controller]")]
