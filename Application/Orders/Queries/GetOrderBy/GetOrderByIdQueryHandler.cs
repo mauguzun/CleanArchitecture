@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccess.Interfaces;
+using Delivery.Interfaces;
 using DomainServices.Intefaces;
 using Entities.Models;
 using MediatR;
@@ -13,14 +14,16 @@ namespace Mobile.UseCases.Orders.Queries.GetOrderBy
     public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, OrderDto>
     {
         private readonly IMapper _mapper;
+        private readonly IDeliveryService _iDeliveryService;
         private readonly IDbContext _dbContext;
-        private readonly IOrderDomainService orderDomainService;
+        private readonly IOrderDomainService _orderDomainService;
 
-        public GetOrderByIdQueryHandler(IMapper mapper, IDbContext dbContext, IOrderDomainService orderDomainService)
+        public GetOrderByIdQueryHandler(IMapper mapper, IDeliveryService iDeliveryService, IDbContext dbContext, IOrderDomainService orderDomainService)
         {
             _mapper = mapper;
+            _iDeliveryService = iDeliveryService;
             _dbContext = dbContext;
-            this.orderDomainService = orderDomainService;
+            _orderDomainService = orderDomainService;
         }
 
         public async Task<OrderDto> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
@@ -33,7 +36,7 @@ namespace Mobile.UseCases.Orders.Queries.GetOrderBy
             if (order == null) throw new EntityNotFoundException();
 
             var dto = _mapper.Map<OrderDto>(order);
-            dto.Total = orderDomainService.GetTotal(order);
+            dto.Total = _orderDomainService.GetTotal(order, _iDeliveryService.CalculateDeliveryCosts);
 
             return dto;
         }
