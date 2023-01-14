@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DataAccess.Interfaces;
-using Domain.Entities;
 using DomainServices.Intefaces;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Mobile.UseCases.Orders.Dto;
 using System.Threading.Tasks;

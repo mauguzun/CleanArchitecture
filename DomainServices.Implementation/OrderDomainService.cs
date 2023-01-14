@@ -1,11 +1,29 @@
-﻿using Domain.Entities;
+﻿using Delivery.Interfaces;
 using DomainServices.Intefaces;
+using Entities.Models;
 
 namespace DomainServices.Implementation
 {
     public class  OrderDomainService :IOrderDomainService
     {
-        public decimal GetTotal(Order order) => order.Items.Sum(x => x.Quantity * x.Product.Price);
+        private readonly IDeliveryService _deliveryService;
 
+        public OrderDomainService(IDeliveryService deliveryService)
+        {
+            _deliveryService = deliveryService;
+        }
+
+        public decimal GetTotal(Order order)
+        {
+            var totalPrice = order.Items.Sum(x => x.Product.Weight);
+
+            if (totalPrice < 1000)
+            {
+                var totalWeight = order.Items.Sum(x => x.Product.Weight);
+                totalPrice += (float)_deliveryService.CalculateDeliveryCosts(totalWeight);
+            }
+
+            return (decimal)totalPrice;
+        }
     }
 }

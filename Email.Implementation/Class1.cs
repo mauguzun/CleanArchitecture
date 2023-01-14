@@ -1,4 +1,4 @@
-﻿namespace Email.Implementation
+﻿namespace Email.Mailchimp
 {
     public class Class1
     {

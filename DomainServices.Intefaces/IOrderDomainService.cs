@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Entities.Models;
 
 namespace DomainServices.Intefaces
 {

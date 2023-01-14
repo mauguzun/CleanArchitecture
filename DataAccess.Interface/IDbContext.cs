@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Interfaces

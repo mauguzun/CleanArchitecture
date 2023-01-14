@@ -1,11 +1,13 @@
 using ApplicationServices.Interfaces;
 using ApplicatonServices.Implementation;
-using DataAccess;
 using DataAccess.Interfaces;
+using DataAccess.Mssql;
+using Delivery.Bold;
+using Delivery.Interfaces;
 using DomainServices.Implementation;
 using DomainServices.Intefaces;
-using Email.Implementation;
 using Email.Interfaces;
+using Email.Mailchimp;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +43,7 @@ namespace WebApp
 
             //Infrascture
 
+            services.AddScoped<IDeliveryService,DeliveryService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<IEmailService,   EmailService>();
             services.AddDbContext<IDbContext,AppDbContext>(builder =>

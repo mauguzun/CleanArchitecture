@@ -13,7 +13,7 @@
     <ProjectReference Include="..\ApplicationServices.Interfaces\ApplicationServices.Interfaces.csproj" />
     <ProjectReference Include="..\DataAccess.Interface\DataAccess.Interfaces.csproj" />
     <ProjectReference Include="..\DomainServices.Intefaces\DomainServices.Intefaces.csproj" />
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Domain\Entities.csproj" />
   </ItemGroup>
 
 </Project>

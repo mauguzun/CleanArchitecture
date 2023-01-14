@@ -19,12 +19,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationServices.Interfaces\ApplicationServices.Interfaces.csproj" />
+    <ProjectReference Include="..\Application\Mobile.UseCases.csproj" />
     <ProjectReference Include="..\ApplicatonServices.Implementation\ApplicatonServices.Implementation.csproj" />
     <ProjectReference Include="..\Controllers\Mobile.Controllers.csproj" />
     <ProjectReference Include="..\DataAccess.Interface\DataAccess.Interfaces.csproj" />
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.Mssql.csproj" />
+    <ProjectReference Include="..\Delivery.Bold\Delivery.Bold.csproj" />
+    <ProjectReference Include="..\Delivery.Interfaces\Delivery.Interfaces.csproj" />
     <ProjectReference Include="..\DomainServices.Implementation\DomainServices.Implementation.csproj" />
-    <ProjectReference Include="..\Email.Implementation\Email.Implementation.csproj" />
+    <ProjectReference Include="..\DomainServices.Intefaces\DomainServices.Intefaces.csproj" />
+    <ProjectReference Include="..\Email.Implementation\Email.Mailchimp.csproj" />
     <ProjectReference Include="..\Email.Interfaces\Email.Interfaces.csproj" />
     <ProjectReference Include="..\WebApp.Interfaces\WebApp.Interfaces.csproj" />
   </ItemGroup>

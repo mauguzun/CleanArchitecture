@@ -1,12 +1,13 @@
 ﻿using DataAccess.Interfaces;
-using Domain.Entities;
+using Entities.Enums;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DataAccess
+namespace DataAccess.Mssql
 {
     public class AppDbContext : DbContext, IDbContext
     {
@@ -30,14 +31,14 @@ namespace DataAccess
 
             modelBuilder.Entity<Product>().HasData(new List<Product>()
             {
-                new Product {Id = 1, Name = "Product 1", Price = 1.00M},
-                new Product {Id = 2, Name = "Product 2", Price = 10M},
-                new Product {Id = 3, Name = "Product 3", Price = 100M},
+                new Product {Id = 1, Name = "Product 1", Price = 1.00M , Weight  =1},
+                new Product {Id = 2, Name = "Product 2", Price = 10M , Weight  =10},
+                new Product {Id = 3, Name = "Product 3", Price = 100M, Weight  =100},
             });
 
             modelBuilder.Entity<Order>().HasData(new List<Order>
             {
-                new Order {Id = 1, Status = Domain.Enums.OrderStatus.Created, CreateDate = new DateTime(2020, 11, 01)}
+                new Order {Id = 1, Status = OrderStatus.Created, CreateDate = new DateTime(2020, 11, 01)}
             });
 
             modelBuilder.Entity<OrderItem>().HasData(new List<OrderItem>
