@@ -32,7 +32,7 @@ namespace Mobile.UseCases.Services
             if (order == null) throw new EntityNotFoundException();
 
             var dto = _mapper.Map<OrderDto>(order);
-            dto.Total = orderDomainService.GetTotal(order);
+            //dto.Total = orderDomainService.GetTotal(order);
 
             return dto;
         }

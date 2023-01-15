@@ -8,5 +8,8 @@ namespace Delivery.Bold
         {
             return (decimal)weight * 10;
         }
+
+        public Task<bool> IsDeliverdAsync(int orderId) => Task.FromResult(true);
+      
     }
 }

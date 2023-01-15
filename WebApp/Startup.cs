@@ -8,6 +8,7 @@ using DomainServices.Implementation;
 using DomainServices.Intefaces;
 using Email.Interfaces;
 using Email.Mailchimp;
+using Hangfire;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Mobile.UseCases.Orders.BackgroundJobs;
 using Mobile.UseCases.Orders.Commands.Create;
 using Mobile.UseCases.Orders.Utils;
 using Mobile.UseCases.Services;
@@ -37,16 +39,17 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-     
+
             // Domain
             services.AddScoped<IOrderDomainService, OrderDomainService>();
 
             //Infrascture
 
-            services.AddScoped<IDeliveryService,DeliveryService>();
+            services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
-            services.AddScoped<IEmailService,   EmailService>();
-            services.AddDbContext<IDbContext,AppDbContext>(builder =>
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IBackgoundJobService, BackgoundJobService>();
+            services.AddDbContext<IDbContext, AppDbContext>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("MsSql")));
 
 
@@ -63,6 +66,8 @@ namespace WebApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApp", Version = "v1" });
             });
             services.AddAutoMapper(typeof(MapperProfile));
+            services.AddHangfire(cfg=>cfg.UseSqlServerStorage(Configuration.GetConnectionString("MsSql")));
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +90,10 @@ namespace WebApp
             {
                 endpoints.MapControllers();
             });
+           
+
+            RecurringJob.AddOrUpdate<UpdateDeliveryStatusJob>(
+                "UpdateDeliveryStatusJob", job => job.ExecuteAsync(), Cron.Minutely);
         }
     }
 }

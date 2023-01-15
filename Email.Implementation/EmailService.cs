@@ -6,6 +6,9 @@ namespace Email.Mailchimp
     {
         public Task SednAsync(string address, string subject, string body)
         {
+            Console.WriteLine(address);
+            Console.WriteLine(subject);
+            Console.WriteLine(body);
             return Task.CompletedTask;
         }
     }

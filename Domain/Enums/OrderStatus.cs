@@ -10,6 +10,7 @@ namespace Entities.Enums
     {
         Created,
         Completed,
-        Canceled
+        Canceled,
+        Delivred
     }
 }

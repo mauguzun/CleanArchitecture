@@ -15,6 +15,8 @@
     <ProjectReference Include="..\Delivery.Interfaces\Delivery.Interfaces.csproj" />
     <ProjectReference Include="..\DomainServices.Intefaces\DomainServices.Intefaces.csproj" />
     <ProjectReference Include="..\Domain\Entities.csproj" />
+    <ProjectReference Include="..\Email.Interfaces\Email.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.Interfaces\WebApp.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
